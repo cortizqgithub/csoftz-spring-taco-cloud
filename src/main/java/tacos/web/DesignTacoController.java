@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/design")
 public class DesignTacoController {
+
+    public static final String DESIGN = "design";
+
     @GetMapping
     public String showDesignForm(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
@@ -42,8 +45,8 @@ public class DesignTacoController {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
         }
-        model.addAttribute("design", new Taco());
-        return "design";
+        model.addAttribute(DESIGN, new Taco());
+        return DESIGN;
     }
 
     private List<Ingredient> filterByType(
@@ -55,10 +58,10 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
+    public String processDesign(@Valid @ModelAttribute(DESIGN) Taco design, Errors errors, Model model) {
         if (errors.hasErrors()) {
-            model.addAttribute("design", design);
-            return "design";
+            model.addAttribute(DESIGN, design);
+            return DESIGN;
         }
 
         // Save the taco design...
