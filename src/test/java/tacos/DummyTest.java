@@ -16,9 +16,9 @@ public class DummyTest {
         Order order = Order.builder()
                 .id(1L)
                 .placedAt(new Date())
-                .name("Carlos")
-                .street("My Street")
-                .zip("myZip")
+                .deliveryName("Carlos")
+                .deliveryStreet("My Street")
+                .deliveryZip("myZip")
                 .ccNumber("343")
                 .ccExpiration("Myaa")
                 .ccCVV(("CVV")).build();
